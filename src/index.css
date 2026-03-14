@@ -1,0 +1,292 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base font size — matches original exactly */
+html {
+  font-size: 14pt;
+}
+
+/* Responsive font sizes — exact breakpoints from original */
+@media (max-width: 1680px) {
+  html { font-size: 10pt; }
+}
+@media (max-width: 1280px) {
+  html { font-size: 10pt; }
+}
+@media (max-width: 980px) {
+  html { font-size: 9pt; }
+}
+@media (max-width: 736px) {
+  html { font-size: 11pt; }
+}
+
+/* Layout */
+.site-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  min-height: 100vh;
+  overflow: hidden;
+  position: relative;
+  padding: 0 3rem 0 0;
+}
+
+.site-main {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-grow: 0;
+  flex-shrink: 0;
+  max-width: 100%;
+  position: relative;
+  text-align: left;
+  z-index: 1;
+  background-color: #FFFFFF;
+}
+
+.site-main > .inner {
+  --padding-horizontal: 4rem;
+  --padding-vertical: 4rem;
+  --spacing: 1.75rem;
+  --width: 32rem;
+  max-width: 100%;
+  position: relative;
+  width: var(--width);
+  z-index: 1;
+  padding: var(--padding-vertical) var(--padding-horizontal);
+}
+
+.site-main > .inner > * {
+  margin-top: var(--spacing);
+  margin-bottom: var(--spacing);
+}
+
+.site-main > .inner > :first-child {
+  margin-top: 0 !important;
+}
+
+.site-main > .inner > :last-child {
+  margin-bottom: 0 !important;
+}
+
+/* Background image */
+body::before {
+  content: '';
+  display: block;
+  background-attachment: scroll;
+  height: 100vh;
+  left: 0;
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  transform: scale(1);
+  width: 100vw;
+  z-index: 0;
+  background-image: url('/bg.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Heading — style-2 */
+.heading {
+  color: #000000;
+  font-family: 'Georgia', serif;
+  letter-spacing: 0.05rem;
+  width: calc(100% + 0.05rem);
+  font-size: 1.75em;
+  line-height: 1.25;
+  font-weight: 400;
+}
+
+/* Body text — style-3 */
+.body-text {
+  text-align: left;
+  color: #000000;
+  font-family: 'Georgia', serif;
+  font-size: 1em;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+.body-text p + p {
+  margin-top: 1.5rem;
+}
+
+.body-text a {
+  color: #33ADA9;
+  text-decoration: underline;
+}
+
+.body-text a:hover {
+  text-decoration: none;
+}
+
+/* Buttons — style-1 */
+.buttons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1.375rem;
+  cursor: default;
+  letter-spacing: 0;
+  padding: 0;
+}
+
+.buttons:not(:first-child) {
+  margin-top: 4rem !important;
+}
+
+.buttons:not(:last-child) {
+  margin-bottom: 4rem !important;
+}
+
+.buttons a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 11.25rem;
+  height: 3rem;
+  line-height: calc(3rem - 4px);
+  padding: 0 0.5rem;
+  vertical-align: middle;
+  font-family: 'Georgia', serif;
+  letter-spacing: 0.05rem;
+  padding-left: calc(0.05rem + 0.5rem);
+  font-size: 0.875em;
+  font-weight: 400;
+  border-radius: 0;
+  border-style: solid;
+  border-width: 2px;
+  text-decoration: none;
+  text-align: center;
+  white-space: nowrap;
+  max-width: 100%;
+  transition: transform 0.25s ease, color 0.25s ease, background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.buttons a:hover {
+  transform: scale(1.025);
+}
+
+.buttons a svg {
+  display: block;
+  flex-grow: 0;
+  flex-shrink: 0;
+  height: 100%;
+  min-width: 16px;
+  pointer-events: none;
+  width: 1.25em;
+  margin-left: 1rem;
+  margin-right: calc(-0.125em + 0.05rem);
+  transition: fill 0.25s ease;
+}
+
+.btn-primary {
+  background-color: #000000;
+  color: #FFFFFF;
+  border-color: #FFFFFF;
+}
+
+.btn-primary svg {
+  fill: #FFFFFF;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: #000000;
+  border-color: #000000;
+}
+
+.btn-secondary svg {
+  fill: #000000;
+}
+
+/* Mobile layout — 980px breakpoint */
+@media (max-width: 980px) {
+  body {
+    display: flex;
+    flex-direction: column;
+    background-color: #FFFFFF;
+  }
+
+  body::before {
+    flex-grow: 1;
+    flex-shrink: 0;
+    max-height: 45vh;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+  }
+
+  .site-main {
+    border: none;
+    box-shadow: none;
+    width: 100%;
+    background-color: #FFFFFF;
+  }
+
+  .site-main > .inner {
+    background: none;
+    max-width: 75%;
+    width: auto;
+  }
+
+  .site-wrapper {
+    height: auto !important;
+    min-height: 0;
+    padding: 0;
+  }
+}
+
+/* Small mobile */
+@media (max-width: 736px) {
+  .site-main > .inner {
+    --padding-horizontal: 2rem;
+    --padding-vertical: 3rem;
+    --spacing: 1.75rem;
+    max-width: 100%;
+  }
+
+  .heading {
+    letter-spacing: 0.04375rem;
+    width: calc(100% + 0.04375rem);
+    font-size: 2em;
+    line-height: 1.25;
+  }
+
+  .buttons:not(:first-child) {
+    margin-top: 2.625rem !important;
+  }
+
+  .buttons:not(:last-child) {
+    margin-bottom: 2.625rem !important;
+  }
+}
+
+/* Very small mobile */
+@media (max-width: 480px) {
+  .site-main > .inner {
+    --spacing: 1.53125rem;
+  }
+
+  .buttons {
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+
+  .buttons a {
+    max-width: 32rem;
+    width: 100%;
+  }
+}
+
+/* Tiny mobile */
+@media (max-width: 360px) {
+  .site-main > .inner {
+    --padding-horizontal: 1.5rem;
+    --padding-vertical: 2.25rem;
+    --spacing: 1.3125rem;
+  }
+}
